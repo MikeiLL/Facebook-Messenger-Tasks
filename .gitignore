@@ -1,0 +1,9 @@
+__pycache__                 
+include                      
+pip-selfcheck.json
+*.csv  
+bin
+lib                        
+pyvenv.cfg
+.env
+.~lock*
