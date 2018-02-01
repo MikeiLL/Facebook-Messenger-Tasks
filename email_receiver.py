@@ -15,6 +15,7 @@ import random
 import string
 import re
 import csv
+import setting
 
 f1 = open('EmailResponseListings.csv', 'w')
 fieldnames = ['name', 'emails', 'message']
