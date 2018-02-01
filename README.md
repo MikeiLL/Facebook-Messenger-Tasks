@@ -1,7 +1,7 @@
 ## Facebook Messenger Tasks
 
 Install fbchat and dotenv
-`pip install dotenv fbchat`
+`pip install python-dotenv fbchat`
 
 Create a file named `.env` with your passwords:
 
