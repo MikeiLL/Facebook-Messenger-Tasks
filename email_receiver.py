@@ -16,8 +16,10 @@ import string
 import re
 import csv
 import setting
+import datetime
 
-f1 = open('EmailResponseListings.csv', 'w')
+current_time = '{0:%Y-%m-%d_%H_%M_%S}'.format(datetime.datetime.now())
+f1 = open('EmailResponseListings'+current_time+'.csv', 'w')
 fieldnames = ['name', 'emails', 'message']
 new_email_records = csv.DictWriter(f1, fieldnames=fieldnames)
 new_email_records.writeheader()
@@ -36,8 +38,10 @@ class StoreMessage(Client):
 			new_email_records.writerow({'name': printable_name, 'emails': emails, 'message': message_object.text})
 			self.markAsRead(author_id)
 			f1.flush()
-		log.info("{} from {} in {}".format(message_object, thread_id, thread_type.name))
-		log.info("{} contains emails: {}".format(message_object.text, emails))
+		# Unless I'm the author
+        if author_id != self.uid:
+			log.info("{} from {} in {}".format(message_object, thread_id, thread_type.name))
+			log.info("{} contains emails: {}".format(message_object.text, emails))
 
 storage = StoreMessage(JIM_EMAIL, JIM_PASS)
 storage.listen()
