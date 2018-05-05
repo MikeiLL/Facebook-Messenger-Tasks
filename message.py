@@ -24,17 +24,17 @@ group = csv.reader(f1)
 # Make a note here of when users were messaged
 messaged = {}
 
-JIM_PASS = setting.JIM_PASS
-JIM_EMAIL = setting.JIM_EMAIL
+USER_PASS = setting.JOHN_PASS
+USER_EMAIL = setting.JOHN_EMAIL
 
-client = Client(JIM_EMAIL, JIM_PASS)
+client = Client(USER_EMAIL, USER_PASS)
 
 print("Getting Session")
 session_cookies = client.getSession()
 client.setSession(session_cookies)
 
 if not client.isLoggedIn():
-    client.login(JIM_EMAIL, JIM_PASS, session_cookies=session_cookies)
+    client.login(USER_EMAIL, USER_PASS, session_cookies=session_cookies)
 
 current_time = '{0:%Y-%m-%d_%H_%M_%S}'.format(datetime.datetime.now())
 # Record Response Results in a file that won't be accidentally overwritten

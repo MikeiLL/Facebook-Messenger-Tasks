@@ -39,7 +39,7 @@ class StoreMessage(Client):
 			self.markAsRead(author_id)
 			f1.flush()
 		# Unless I'm the author
-        if author_id != self.uid:
+		if author_id != self.uid:
 			log.info("{} from {} in {}".format(message_object, thread_id, thread_type.name))
 			log.info("{} contains emails: {}".format(message_object.text, emails))
 
